@@ -1,0 +1,8 @@
+{
+  "name": "tech-articles",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "zenn-cli": "^0.1.159"
+  }
+}
