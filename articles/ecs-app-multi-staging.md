@@ -2,7 +2,7 @@
 title: "ECS Fargate上のWebアプリでマルチステージング環境を実現する"
 emoji: "🤹"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ["ECS", "AWS", "Tech", "マルチステージング"]
 published: false
 ---
 
