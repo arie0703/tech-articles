@@ -3,7 +3,7 @@ title: "ECS Fargate上のWebアプリでマルチステージング環境を実�
 emoji: "🤹"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["ECS", "AWS", "Tech", "マルチステージング"]
-published: false
+published: true
 ---
 
 ## やりたいこと
@@ -46,7 +46,7 @@ ECS Fargate でホスティングしているアプリケーションでマル�
     └── sample-app.json
 ```
 
-nginx.conf
+**nginx.conf**
 
 ```conf
 events {}
@@ -62,7 +62,7 @@ http {
 }
 ```
 
-Dockerfile
+**Dockerfile**
 
 ```dockerfile
 FROM nginx:alpine
@@ -74,7 +74,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-タスク定義
+**タスク定義**
 
 ```json
 {
@@ -279,14 +279,11 @@ jobs:
 
 ### アプリケーションのリポジトリ内に terraform ファイルを用意する
 
-data.tf
-
-<aside>
-💡
-
+:::message
 ECS クラスター・タスク定義・ALB・リスナー・VPC・セキュリティグループはすでに別途構築されているものとします。
+:::
 
-</aside>
+**data.tf**
 
 ```hcl
 data "aws_ecs_cluster" "existing_cluster" {
@@ -334,7 +331,7 @@ data "aws_subnets" "private" {
 
 ```
 
-main.tf
+**main.tf**
 
 ```hcl
 # ECS service
@@ -390,7 +387,7 @@ resource "aws_lb_listener_rule" "host_based" {
 
 ```
 
-variables.tf
+**variables.tf**
 
 ```hcl
 variable "listener_priority" {
@@ -447,15 +444,16 @@ http {
 
 これで GitHub Actions のワークフローを実行してみます。
 
-AWS コンソール > ECS から名称にコミットハッシュのついたサービスがデプロイされているを確認
+AWS コンソール > ECS から名称にコミットハッシュのついたサービスがデプロイされていることを確認
 
 ![](/images/ecs-app-multi-staging/ecs_service.png)
+_コミットハッシュのついた ECS サービスがデプロイされている_
 
-domain.jp にアクセスしてみる
+`domain.jp` にアクセスしてみる
 
 ![](/images/ecs-app-multi-staging/hello_nginx.png)
 
-0adda9f.domain.jp にアクセスすると
+`0adda9f.domain.jp` にアクセスすると
 
 ![](/images/ecs-app-multi-staging/another_version.png)
 
