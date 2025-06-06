@@ -1,16 +1,15 @@
 ---
 title: ECS Fargate上のWebアプリでマルチステージング環境を実現する
-tags:
-  - AWS
-  - tech
-  - ECS
-  - マルチステージング
 private: false
+tags:
+  - ECS
+  - AWS
+  - Tech
+  - マルチステージング
 updated_at: '2025-04-30T12:56:05+09:00'
 id: edf06eb9a8d410266222
 organization_url_name: null
 slide: false
-ignorePublish: false
 ---
 
 ## やりたいこと
@@ -462,7 +461,6 @@ AWS コンソール > ECS から名称にコミットハッシュのついたサ
 `0adda9f.domain.jp` にアクセスすると
 
 ![](https://raw.githubusercontent.com/arie0703/tech-articles/main/images/ecs-app-multi-staging/another_version.png)
-
 別バージョンであることが確認できます！
 
 ## 課題点
