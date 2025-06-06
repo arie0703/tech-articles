@@ -2,7 +2,7 @@
 title: "ECSタスク上でTerraform × MySQL Providerを実行できる環境を作ってみる"
 emoji: "🪜"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["ECS", "AWS", "Tech", "SessionManager", "Fargate", "Terraform"]
+topics: ["AWS", "Tech", "SessionManager", "Fargate", "Terraform"]
 published: true
 ---
 
