@@ -454,7 +454,6 @@ http {
 AWS コンソール > ECS から名称にコミットハッシュのついたサービスがデプロイされていることを確認
 
 ![](https://raw.githubusercontent.com/arie0703/tech-articles/main/images/ecs-app-multi-staging/ecs_service.png)
-_コミットハッシュのついた ECS サービスがデプロイされている_
 
 `domain.jp` にアクセスしてみる
 
@@ -463,6 +462,8 @@ _コミットハッシュのついた ECS サービスがデプロイされて�
 `0adda9f.domain.jp` にアクセスすると
 
 ![](https://raw.githubusercontent.com/arie0703/tech-articles/main/images/ecs-app-multi-staging/another_version.png)
+
+別バージョンであることが確認できます！
 
 ## 課題点
 
