@@ -2,7 +2,6 @@
 title: ECSタスク上でTerraform × MySQL Providerを実行できる環境を作ってみる
 private: false
 tags:
-  - ECS
   - AWS
   - Tech
   - SessionManager
