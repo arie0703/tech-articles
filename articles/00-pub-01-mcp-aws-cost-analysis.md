@@ -87,12 +87,12 @@ CloudFrontのコスト内訳詳細
 
 ```csv
 item_description,total_cost
-$0.06 per GB data transfer out (Japan),111.11111
-"$0.00 per 10,000 Requests for HTTPS GET and HEAD requests in Japan",111.11111
+data transfer out (Japan),111.11111
+"HTTPS GET and HEAD requests in Japan",111.11111
 Tax for product code AmazonCloudFront,111.11111
-$0.06 per GB data transfer out (United States),111.11111
-$0.120 per GB - first 10 TB / month data transfer out,111.11111
-"$0.00 per 10,000 Requests for HTTPS GET and HEAD requests in United States",111.11111
+data transfer out (United States),111.11111
+$0.xxx per GB - first 10 TB / month data transfer out,111.11111
+"$0.xx per 10,000 Requests for HTTPS GET and HEAD requests in United States",111.11111
 ```
 
 ※ 他サービスの内訳は割愛
@@ -150,13 +150,13 @@ Reserved Instanceを除いたAWSサービスの利用状況を分析し、上位
 
 #### 3. AmazonRDS ($3,333.00)
 **主なコスト要因:**
-- Aurora MySQL r6g.4xlarge: $1,799.82 (54.0%)
+- Aurora MySQL: $1,799.82 (54.0%)
 - スナップショットエクスポート: $339.97 (10.2%)
 - Aurora Serverless v2: $313.30 (9.4%)
 - バックアップストレージ: $273.31 (8.2%)
 
 **最適化提案:**
-- Reserved Instanceへの移行（r6g.4xlarge）
+- Reserved Instanceへの移行（Aurora MySQL）
 - 不要なスナップショットの削除
 - バックアップ保持期間の見直し
 - Serverless v2の設定最適化
