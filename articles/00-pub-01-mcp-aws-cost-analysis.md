@@ -3,7 +3,7 @@ title: "MCPツールを用いた自然言語でのAWSコスト分析"
 emoji: "🦆"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "Tech", "DuckDB", "MCP", "Vega-Lite"]
-published: false
+published: true
 publication_name: "canly"
 ---
 
