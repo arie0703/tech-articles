@@ -1,17 +1,17 @@
 ---
 title: MCPツールを用いた自然言語でのAWSコスト分析
-publication_name: canly
-private: false
 tags:
   - AWS
-  - Tech
-  - DuckDB
+  - tech
   - MCP
-  - Vega-Lite
-updated_at: '2025-07-28T02:31:33.858Z'
-id: null
+  - vega-lite
+  - duckdb
+private: false
+updated_at: '2025-07-28T11:31:42+09:00'
+id: be202a9d37a0b5a4ea25
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 みなさんこんにちは！
