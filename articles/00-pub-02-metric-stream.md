@@ -88,7 +88,7 @@ Datadogへのメトリクス配信を行うためのFirehose Delivery Streamを�
 CloudWatchメトリクスをFirehoseに配信するためのMetric Streamsを作成します。
 
 
-:::message alert
+:::message
 出力フォーマットは`OpenTelemetry v0.7`を指定する必要があります。
 
 [参考](https://docs.datadoghq.com/ja/integrations/guide/aws-cloudwatch-metric-streams-with-kinesis-data-firehose/?tab=aws%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB)
@@ -108,7 +108,7 @@ Firehoseの配信失敗ログを格納するためのS3バケットを作成し�
 
 FirehoseからDatadogにメトリクスを送信する際、必要となるDatadogのAPIキーを格納します。
 
-:::message alert
+:::message
 FirehoseでSecrets ManagerからDatadog APIキーを取得する際は、**キー名が`api_key`である必要があります**
 :::
 
