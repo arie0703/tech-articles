@@ -40,7 +40,7 @@ API経由でのメトリクス取得と比較して、コスト効率が高い�
 
 ### ① Metric Streamsで必ずしもコスト減になるとは限らない
 
-API経由でメトリクス送信している部分を**全てMetric Streams置き換えれば良いわけではありません**。
+API経由でメトリクス送信している部分を**全てMetric Streamsに置き換えれば良いわけではありません**。
 
 リソースの種類によっては、Datadog IntegrationのTag Filter機能で**タグによる絞り込み**ができる場合があります。タグによる絞り込みは**CloudWatch API経由のみ可能**です。(ALB, EC2, RDS, SQS, Lambdaなどが対象)
 
@@ -98,7 +98,7 @@ CloudWatchメトリクスをFirehoseに配信するためのMetric Streamsを作
 
 Metric StreamsとFirehoseが適切に動作するために、以下のIAMロールを作成します：
 - Metric Streams用のIAMロール（Firehoseへの書き込み権限）
-- Firehose用のIAMロール（S3バケットへのログ書き込み権限、SecretsManagerからのAPIキー取得権限）
+- Firehose用のIAMロール（S3バケットへのログ書き込み権限、Secrets ManagerからのAPIキー取得権限）
 
 ### ④ S3バケット
 
