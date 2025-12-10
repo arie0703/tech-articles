@@ -3,7 +3,7 @@ title: "Metric Streamsを用いたDatadogへのAWSメトリクス送信コスト
 emoji: "🏞️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["AWS", "コスト削減", "CloudWatch", "Metric Streams"]
-published: false
+published: true
 publication_name: "canly"
 ---
 
