@@ -69,6 +69,7 @@ container_name: api
 region: ap-northeast-1 
 ```
 
+**メッセージ内容**
 
 ```md
 {{#is_alert}} 
@@ -86,10 +87,10 @@ uri: `{{ log.attributes.uri }}`
 {{/is_alert}}
 ```
 
+**実際の通知内容**
+
 ![メッセージをカスタマイズした後の通知](/images/00-pub-03-optimize-datadog-monitor/custom_alert_msg.png)
 *ログに含まれる情報が通知の時点でわかるようになった*
-
-
 
 ### ログサンプルで前後の流れが見えるようにする
 
