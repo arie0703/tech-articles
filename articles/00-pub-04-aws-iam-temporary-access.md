@@ -2,8 +2,8 @@
 title: "Claude Code で内製する Slack × AWS IAM Identity Center の一時権限付与ワークフロー"
 emoji: "🔐"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["AWS", "IAM", "Slack", "Lambda", "ClaudeCode"]
-published: false
+topics: ["AWS", "IAM", "Slack", "ClaudeCode"]
+published: true
 publication_name: "canly"
 ---
 
