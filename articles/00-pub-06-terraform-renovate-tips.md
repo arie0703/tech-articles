@@ -56,12 +56,13 @@ terraform
 ```
 
 原因は `renovate.json` の `additionalBranchPrefix` に `{{baseDir}}` を指定していたことです。
-`additionalBranchPrefix` は Renovate が作成するブランチ名に付与する prefix で、ここにディレクトリ名を含めると、**ディレクトリごとに別ブランチ = 別 PR** として作成されるようになります。
+`additionalBranchPrefix` は Renovate が作成するブランチ名に付与する prefix です。Renovate は **ブランチ名が同じ更新を 1 つの PR にまとめる** ため、ここに `baseDir` (tfstate を持つディレクトリのパス) を含めると、**ディレクトリごとに別ブランチ = 別 PR** として作成されます。
+（`additionalBranchPrefix` を単純に削除すると、リポジトリ全体の更新が 1 つの PR にまとまってしまい、PRの粒度が大きくなってしまいます。）
 
-そこで、以下の変更を行いました。
+今回のケースでは、**`terraform/` 直下のディレクトリ (上記の例では `service-1` 〜 `service-3`) 単位** で PR をまとめるように、以下の変更を行いました。
 
-- `additionalBranchPrefix` で `baseDir` を指定している箇所を削除
-- `matchFileNames` にディレクトリパスを指定し、`terraform/` 配下のディレクトリ単位で PR が作成されるように設定 (上記の構成であれば 3 PR の想定)
+- `matchFileNames` で対象を `terraform/` 配下に限定する
+- `additionalBranchPrefix` を `baseDir` から「`terraform/` 直下のディレクトリ名」に変更する
 
 before:
 
@@ -77,9 +78,17 @@ after:
 ```json
 {
   "matchPackageNames": ["hashicorp/terraform"],
-  "matchFileNames": ["terraform/**"]
+  "matchFileNames": ["terraform/**"],
+  "additionalBranchPrefix": "{{{ replace 'terraform/([^/]+).*' '$1' packageFileDir }}}-"
 }
 ```
+
+`additionalBranchPrefix` の変更内容について:
+
+- `packageFileDir` は更新対象ファイルが置かれているディレクトリのパス (例: `terraform/service-1/service-1-a`)
+- Renovate のテンプレートで使える `replace` ヘルパーで、正規表現 `terraform/([^/]+).*` にマッチさせ、キャプチャした `terraform/` 直下のディレクトリ名 (例: `service-1`) だけを取り出す
+
+これにより、`service-1-a` 〜 `service-1-c` の更新はすべて `service-1-` という prefix を持つ同じブランチに集約され、上記の構成であれば **9 PR → 3 PR** にまとまります。
 
 PR の数が減ることで、レビュー・マージの負荷が下がるだけでなく、後述する rebase による CI 実行回数の削減にもつながります。
 
@@ -118,8 +127,7 @@ PR が頻繁にマージされるリポジトリでは Renovate PR のブラン�
 ```json
 {
   "rebaseWhen": "behind-base-branch",
-  "prConcurrentLimit": 10,
-  "prHourlyLimit": 2
+  "prConcurrentLimit": 10
 }
 ```
 
@@ -150,7 +158,7 @@ tfaction では、PR に **`renovate-change` ラベル** を付与すると plan
 
 ## まとめ
 
-- **PR の粒度**: `additionalBranchPrefix` に `baseDir` を含めるとディレクトリごとに PR が作成される。`matchFileNames` と組み合わせて適切な単位にまとめる
+- **PR の粒度**: `additionalBranchPrefix` に `baseDir` を含めるとディレクトリごとに PR が作成される。`additionalBranchPrefix` に `replace` ヘルパーで抽出した上位ディレクトリ名を指定し、適切な単位にまとめる
 - **rebase の方針**: ブランチ保護で「最新であること」を要求している場合は `rebaseWhen: behind-base-branch` にする。ただし CI コスト増を避けるため `prConcurrentLimit` / `prHourlyLimit` もあわせて設定する
 - **plan 差分の許容**: `archive_file` などで必ず差分が出るアップデートには、tfaction の `renovate-change` ラベルを `addLabels` で付与する
 
