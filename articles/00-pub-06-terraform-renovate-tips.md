@@ -157,7 +157,7 @@ tfaction では、PR に **`renovate-change` ラベル** を付与すると plan
 ## まとめ
 
 - **PR の粒度**: `additionalBranchPrefix` に `baseDir` を含めるとディレクトリごとに PR が作成される。`additionalBranchPrefix` に `replace` ヘルパーで抽出した上位ディレクトリ名を指定し、適切な単位にまとめる
-- **rebase の方針**: ブランチ保護で「最新であること」を要求している場合は `rebaseWhen: behind-base-branch` にする。ただし CI コスト増を避けるため `prConcurrentLimit` / `prHourlyLimit` もあわせて設定する
+- **rebase の方針**: ブランチ保護で「最新であること」を要求している場合は `rebaseWhen: behind-base-branch` にする。ただし CI コスト増を避けるため `prConcurrentLimit`　などのオプション もあわせて設定する
 - **plan 差分の許容**: `archive_file` などで必ず差分が出るアップデートには、tfaction の `renovate-change` ラベルを `addLabels` で付与する
 
 本記事がRenovate PR の滞留に悩んでいる方の参考になれば幸いです。
