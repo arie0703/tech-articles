@@ -120,14 +120,12 @@ PR が頻繁にマージされるリポジトリでは Renovate PR のブラン�
 :::
 
 `rebaseWhen` の変更とあわせて、以下のオプションで PR の作成数を制限し、rebase 起因で同時に走る CI の数を抑えるとよいでしょう。
-
-- `prConcurrentLimit`: 同時に open できる PR 数の上限
-- `prHourlyLimit`: 1 時間あたりに作成される PR 数の上限
+例えば、`prConcurrentLimit`というオプションを設定することで、同時に open できる PR 数に上限を設けることができます。
 
 ```json
 {
   "rebaseWhen": "behind-base-branch",
-  "prConcurrentLimit": 10
+  "prConcurrentLimit": 5
 }
 ```
 
