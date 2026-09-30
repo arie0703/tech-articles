@@ -3,7 +3,7 @@ title: "Terraform リポジトリの Renovate 設定を見直して PR の滞留
 emoji: "♻️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Terraform", "Renovate", "tfaction", "GitHubActions"]
-published: false
+published: true
 publication_name: "canly"
 ---
 
@@ -12,7 +12,7 @@ publication_name: "canly"
 こんにちは！カンリー SRE チームの有村です。
 
 Renovate を導入すると依存関係の更新を自動化できる一方で、設定次第では PR が大量に作成され、誰もマージしないまま滞留してしまうことがあります。
-実際にカンリーで利用しているTerraformリポジトリにおいても、**74 件の Renovate PR が滞留** している状態になっていました。
+実際にカンリーで運用しているTerraformリポジトリにおいても、**74 件** の Renovate PRが滞留していました。
 
 本記事では、Renovate の設定を見直して滞留を解消した際に得られた Tips を紹介します。
 
