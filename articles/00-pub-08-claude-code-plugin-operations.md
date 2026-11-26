@@ -3,7 +3,7 @@ title: "作って終わりにしない Claude Code 共通プラグイン運用�
 emoji: "🧰"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["ClaudeCode", "Devin", "SRE", "AI"]
-published: false
+published: true
 publication_name: "canly"
 ---
 
